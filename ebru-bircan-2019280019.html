@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>EBRU BİRCAN 2019280019</title>
+    </head>
+    <body>
+        <h1>ROMA RAKAMLARI ÇEVİRİCİ</h1>
+        <label for="id1">Sayi</label>
+        <input type='text'  id='id1' />
+        <br>
+        <button type="button" onclick="RomayaCevir()">RomayaCevir</button>
+        <br><br>
+        <label for="id2">RomaSayisi</label>
+        <input type='text' id='id2' />
+        <br>
+        <button type="button" onclick="SayiyaCevir()">SayiyaCevir</button>      
+    </body>
+    <script>
+        function RomayaCevir(){
+            var sayi = parseInt(document.getElementById("id1").value);
+            var dizi = '';
+            var ondalik = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+            var roman = ["M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I"];
+            if (sayi<1 || sayi>3999){
+                alert("lütfen 1 ile 3999 arasında bir sayı giriniz");
+            }
+            else{
+                for (var i = 0;i<=ondalik.length;i++) {
+                    while (sayi%ondalik[i] < sayi) {     
+                        dizi += roman[i];
+                        sayi -= ondalik[i];
+                        }
+                }
+                alert(dizi);
+            }
+            
+        }
+        function SayiyaCevir() {
+            var toplam = 0;
+            var str = document.getElementById("id2").value;
+            var ondalik = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+            var roman = ["M", "CM","D","CD","C", "XC", "L", "XL", "X","IX","V","IV","I"];
+            for (var i = 0;i<=ondalik.length;i++) {
+                while (str.indexOf(roman[i]) === 0){
+                    toplam += ondalik[i];
+                    str = str.replace(roman[i],'');
+    }
+  }
+            if(toplam<1 || toplam>3999){
+                alert("lütfen sadece roma rakamlarından oluşan ve  MMMCMXCIX ile I arasında bir roma sayisi giriniz");
+                }
+            else{         
+                alert(toplam);
+                }              
+
+}
+    </script>
+</html>
+<!-- KAYNAKÇA -->
+<!-- https://roma-rakamlari-cevirici.hesabet.com -->
+<!-- https://selftaughtjs.com/algorithm-sundays-converting-roman-numerals -->
+<!-- https://www.w3schools.com/js/js_arrays.asp -->
+<!-- https://www.w3schools.com/jsref/jsref_operators.asp -->
+<!-- https://www.w3schools.com/jsref/jsref_length_array.asp -->
+<!-- http://www.yazilimmutfagi.com/index.php/2009/03/13/javascript-ile-string-islemleri-indexof-lastindexof-charat-length-split-tolowercase-touppe/ -->
+<!-- http://www.muratoner.net/javascript/javascript-array-indexof-metodu-kullanimi-ve-ornekleri -->
+<!-- https://www.bilisimogretmeni.com/web-tasarim-ve-programlama/javascript-while-dongusu-ornekleri.html -->
+<!-- http://www.webcebir.com/231-javascript-while-dongusu-dersi.html -->
+
